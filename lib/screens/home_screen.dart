@@ -1,3 +1,4 @@
+import 'package:doit_todo_app/widgets/todo_item.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,6 +16,23 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Container(
+          padding: const EdgeInsets.all(30),
+          child: const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Text('tasks'), Text('setting'), Text('logout')],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
+      appBar: AppBar(
+        title: const Text('DoIt'),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -38,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   todoController.clear();
                 },
                 child: Icon(Icons.add)),
-            for (String todo in todos) Text(todo),
+            for (String todo in todos) ToDoItem(todoText: todo),
           ],
         ),
       ),
